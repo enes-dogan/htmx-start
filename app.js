@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
         />
         <link rel="icon" href="/icon.png" />
         <link rel="stylesheet" href="/main.css" />
+        <script src="/htmx.js" defer></script>
       </head>
       <body>
         <header id="main-header">
@@ -28,10 +29,18 @@ app.get('/', (req, res) => {
 
         <main>
           <p>HTMX is a JavaScript library that you use without writing JavaScript code.</p>
-          <button>Learn More</button>
+          <button hx-get="/info" hx-swap="outerHTML">Learn More</button>
         </main>
       </body>
     </html>
+  `);
+});
+
+app.get('/info', (req, res) => {
+  res.send(`
+    <ul>
+      ${HTMX_KNOWLEDGE.map(info => `<li>${info}</li>`).join('')}
+    </ul>
   `);
 });
 
