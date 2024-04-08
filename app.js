@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
         <link
           href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
           rel="stylesheet"
-          
         />
         <link rel="icon" href="/icon.png" />
         <link rel="stylesheet" href="/main.css" />
@@ -28,9 +27,20 @@ app.get('/', (req, res) => {
         </header>
 
         <main>
-          <p>HTMX is a JavaScript library that you use without writing JavaScript code.</p>
-          <button hx-get="/info" hx-swap="outerHTML">Learn More</button>
+          <p>
+            HTMX is a JavaScript library that you use without writing JavaScript
+            code.
+          </p>
+          <button
+            hx-get="/info"
+            hx-trigger="mouseenter[ctrlKey], click"
+            hx-target="main"
+            hx-swap="beforeend"
+          >
+            Learn More
+          </button>
         </main>
+        <div id="result"></div>
       </body>
     </html>
   `);
